@@ -14,8 +14,8 @@ function Navigation(): any {
 	return (
 		<NavigationContainer>
 			<Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
+        screenOptions={({ route }: any) => ({
+          tabBarIcon: ({ focused, color, size }: any) => {
             let iconName = '';
 
             if (route.name === 'Search') {

@@ -1,13 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
 
 import Search from '../../Search';
+import Film from '../../Film/index';
+import Provider from '../../Provider';
 
 function HomeScreen(): any {
 	return (
-		<View style={{ flex: 1, alignItems: 'center' }}>
+		<Provider>
 			<Search />
-		</View>
+			<Film />
+		</Provider>
 	);
 }
 
