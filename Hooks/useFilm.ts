@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { rapidApiKey } from '../env'
 var axios = require("axios").default;
 
 interface IFilm {
@@ -13,7 +14,7 @@ function useFilm(nameFilm: IFilm) {
       url: "https://imdb8.p.rapidapi.com/auto-complete",
       params: { q: nameFilm.name },
       headers: {
-        "x-rapidapi-key": "7b96fbf8a0mshb69430c5bc8a83dp1d15eajsn5c5a4f2c0dd0",
+        "x-rapidapi-key": rapidApiKey,
         "x-rapidapi-host": "imdb8.p.rapidapi.com",
       },
     };
