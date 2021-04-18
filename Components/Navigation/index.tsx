@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { COLOR_PRIMARY } from '../../config/style-conf';
+import { MAIN_COLOR, SELECT_COLOR, TEXT_COLOR } from '../../config/style-conf';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import HomeScreen from './tabs/Home';
@@ -31,8 +31,10 @@ function Navigation(): any {
           },
         })}
         tabBarOptions={{
-          activeTintColor: COLOR_PRIMARY,
-          inactiveTintColor: 'gray',
+          activeTintColor: SELECT_COLOR,
+          inactiveTintColor: TEXT_COLOR,
+          activeBackgroundColor: MAIN_COLOR,
+          inactiveBackgroundColor: MAIN_COLOR,
         }}
       >
 				<Tab.Screen name="Search" component={HomeScreen} />
