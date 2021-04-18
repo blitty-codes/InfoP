@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
-import { COLOR_PRIMARY } from '../../../config/style-conf';
+import { MAIN_COLOR } from '../../../config/style-conf';
 
 export default StyleSheet.create({
   container: {
     display: "flex",
-    color: COLOR_PRIMARY,
+    color: MAIN_COLOR,
+    marginTop: "50px",
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",
@@ -12,10 +13,9 @@ export default StyleSheet.create({
   },
   textInput: {
     width: 200,
-    marginTop: 150,
     marginLeft: 5,
     padding: 5,
-    borderColor: COLOR_PRIMARY,
+    borderColor: MAIN_COLOR,
     borderWidth: 1,
     margin: 20,
   },

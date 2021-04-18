@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react';
 import { View } from 'react-native';
 
 export default ({ children }: any) =>{
-    const [state, setState] = useState({});
+    const [state, setState] = useState({ name: '' });
     return (
       <FilmContext.Provider value={[state, setState]}>
         <View style={{ flex: 1, alignItems: 'center' }}>
@@ -12,4 +12,4 @@ export default ({ children }: any) =>{
     );
 }
 
-export const FilmContext = createContext({});
+export const FilmContext = createContext([{ name: '' }]);

@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { TextInput, View } from 'react-native';
 
 import Style from './styles';
+import { MAIN_COLOR } from '../../../config/style-conf'
 
 import { FilmContext } from "../../Provider/index";
 import StyledIcon from '../../StyledIcons';
@@ -26,9 +27,9 @@ function SearchEngine () : any {
       <StyledIcon
           name="search1"
           size={30}
-          color="tomato"
+          color={MAIN_COLOR}
           onPress={() => {
-            setTitleFilm({name: text})
+            setTitleFilm({ name: text })
           }}
       />
     </View>
