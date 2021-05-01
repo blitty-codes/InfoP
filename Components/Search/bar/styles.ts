@@ -5,7 +5,7 @@ export default StyleSheet.create({
   container: {
     display: "flex",
     color: MAIN_COLOR,
-    marginTop: "50px",
+    marginTop: 50,
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",
