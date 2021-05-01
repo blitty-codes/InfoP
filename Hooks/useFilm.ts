@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { rapidApiKey } from '../env'
+import { rapidApiKey } from '../env';
+import { IFilmData } from '../Interface/IFilmData';
 var axios = require("axios").default;
 
 interface IFilm {
@@ -7,7 +8,9 @@ interface IFilm {
 }
 
 function useFilm(nameFilm: IFilm) {
-  const [film, setFilm] = useState(null);
+  const [film, setFilm] = useState<IFilmData[]>();
+  let films: IFilmData[] = new Array(0);
+
   useEffect(() => {
     var options = {
       method: "GET",
@@ -21,7 +24,24 @@ function useFilm(nameFilm: IFilm) {
 
     if (nameFilm.name != '') {
       axios.request(options).then(function (response: any) {
-        setFilm(response.data);
+        response.data.d.forEach((film: any) => {
+          films.push(
+            {
+              image: {
+                height: film.i.height,
+                width: film.i.width,
+                imageURL: film.i.imageUrl,
+              },
+              id: film.id,
+              title: film.l,
+              rank: film.rank,
+              authors: film.s,
+              year: film.y,
+            }
+          )
+        });
+        setFilm(films);
+        // console.log(film);
       }).catch(function (error: string) {
         console.error(error);
       });
