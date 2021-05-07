@@ -1,6 +1,6 @@
 import { IImage } from './IImage'
 
-export interface IFilmData {
+export default interface IFilmData {
   image: IImage,
   id: number,
   title: string,
