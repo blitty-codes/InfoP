@@ -8,9 +8,11 @@ import { MAIN_COLOR } from '../../../config/style-conf'
 import { FilmContext } from "../../Provider/index";
 import StyledIcon from '../../StyledIcons';
 
+import IFilmUseState from '../../../Interface/IFilmUseState';
+
 function SearchEngine () : any {
   const [text, setText] = useState('Frozen');
-  const [titleFilm, setTitleFilm] = useContext(FilmContext);
+  const { setTitleFilm }: IFilmUseState = useContext(FilmContext);
 
   useEffect(() => setText(text), [text]);
 
@@ -29,7 +31,7 @@ function SearchEngine () : any {
           size={30}
           color={MAIN_COLOR}
           onPress={() => {
-            setTitleFilm({ name: text })
+            setTitleFilm(text)
           }}
       />
     </View>
