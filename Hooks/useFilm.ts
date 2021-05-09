@@ -23,15 +23,22 @@ function useFilm(nameFilm: string) {
         response.data.d.forEach((film: any) => {
           films.push(
             {
-              image: {
-                height: 0 ?? film.i.height,
-                width: 0 ?? film.i.width,
-                imageURL: null ?? film.i.imageUrl,
-              },
+              image: (film.hasOwnProperty('i')) ?
+                {
+                  height: film.i.height,
+                  width: film.i.width,
+                  imageURL: film.i.imageUrl,
+                }
+              :
+                {
+                  height: 0,
+                  width: 0,
+                  imageURL: '',
+                },
               id: film.id,
               title: film.l,
               rank: null ?? film.rank,
-              authors: '' ?? film.s,
+              authors: null ?? film.s,
               year: null ?? film.y,
             }
           )
