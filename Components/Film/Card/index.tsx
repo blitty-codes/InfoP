@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, Image } from 'react-native';
+// https://react-native-async-storage.github.io/async-storage/docs/api
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { localStorageKey } from '../../../env';
 
 import IFilmData from '../../../Interface/IFilmData';
 import StyledIcon from "../../StyledIcons";
@@ -7,12 +11,38 @@ import filmCardStyle from "../../../style/filmCardStyle";
 
 function CardFilm (props: any): any {
   const film: IFilmData = props.filmResult;
-  const [starRated, setStarRated] = useState("staro");
+  const [starRated, setStarRated] = useState(props.star);
+
+  // not working
+  const star = async () => {
+    let favFilms = props.favFilms;
+    let newFavFilms: string[] = [];
+
+    if (starRated == "star") {
+      newFavFilms = favFilms.filter((id: string) => {
+        return id != film.id;
+      });
+      props.setFavFilms(newFavFilms);
+      setStarRated("staro");
+    } else {
+      newFavFilms = newFavFilms.concat(favFilms, [film.id]);
+      props.setFavFilms(newFavFilms);
+      setStarRated("star");
+    }
+
+    await AsyncStorage.setItem(localStorageKey, JSON.stringify(newFavFilms))
+  }
 
   return (
     <View>
       <Image style={filmCardStyle.tinyLogo} source={{ uri: film.image.imageURL, }} />
-      <StyledIcon name={starRated} size={36} style={{ width: "fit-content", position: 'absolute', right: 2 }} color="gold" onPress={() => { setStarRated((starRated == "star") ? "staro" : "star") }} />
+      <StyledIcon
+        name={starRated}
+        size={36}
+        style={filmCardStyle.starStyle}
+        color="gold"
+        onPress={star}
+      />
       <View style={filmCardStyle.allText}>
         <Text style={filmCardStyle.title} >{film.title}</Text>
         <View style={filmCardStyle.description}>
