@@ -28,6 +28,11 @@ const filmCardStyle = StyleSheet.create({
     textDecorationLine: "underline",
     textDecorationStyle: "solid",
   },
+  starStyle: {
+    width: "fit-content",
+    position: "absolute",
+    right: 2,
+  },
 });
 
 export default filmCardStyle;
