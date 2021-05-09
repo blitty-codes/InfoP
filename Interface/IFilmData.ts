@@ -2,7 +2,7 @@ import { IImage } from './IImage'
 
 export default interface IFilmData {
   image: IImage,
-  id: number,
+  id: string,
   title: string,
   rank: number,
   authors: string,
